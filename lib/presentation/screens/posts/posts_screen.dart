@@ -15,6 +15,8 @@ class PostsScreen extends ConsumerWidget {
     final colorScheme = Theme.of(context).colorScheme;
     final textTheme = Theme.of(context).textTheme;
 
+    final bottomOffset = MediaQuery.paddingOf(context).bottom;
+
     return Scaffold(
       backgroundColor: colorScheme.surface,
       appBar: AppBar(
@@ -38,7 +40,7 @@ class PostsScreen extends ConsumerWidget {
                 await ref.read(postsProvider.notifier).refreshPosts();
               },
               child: ListView.separated(
-                padding: EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                padding: EdgeInsets.all(12).copyWith(bottom: bottomOffset + 12),
                 separatorBuilder: (context, index) =>
                     const SizedBox(height: 12),
                 itemCount: posts.length,

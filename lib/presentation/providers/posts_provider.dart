@@ -23,11 +23,7 @@ class PostsNotifier extends _$PostsNotifier {
 }
 
 @riverpod
-Post? postDetails(Ref ref, int id) {
-  final postsAsync = ref.watch(postsProvider);
-
-  return postsAsync.value?.firstWhere(
-    (post) => post.id == id,
-    orElse: () => throw Exception('Post not found'),
-  );
+Future<Post?> postDetails(Ref ref, int id) async {
+  final posts = await ref.watch(postsProvider.future);
+  return posts.where((p) => p.id == id).firstOrNull;
 }
