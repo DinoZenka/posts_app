@@ -48,7 +48,7 @@ class ListItem extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    '#$index',
+                    '#${index + 1}',
                     style: TextStyle(color: colorScheme.onPrimaryContainer),
                   ),
                   const Spacer(),
