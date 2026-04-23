@@ -30,7 +30,16 @@ class PostDetails extends ConsumerWidget {
       ),
       body: postAsync.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (error, _) => Center(child: Text('Error: $error')),
+        error: (error, _) => Center(
+          child: Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Text(
+              error.toString(),
+              textAlign: TextAlign.center,
+              style: textTheme.bodyLarge,
+            ),
+          ),
+        ),
         data: (post) {
           if (post == null) {
             return Center(

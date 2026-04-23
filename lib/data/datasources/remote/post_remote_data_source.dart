@@ -12,9 +12,11 @@ class PostRemoteDataSourceImpl implements PostRemoteDataSource {
 
   @override
   Future<List<PostDto>> getPosts() async {
-    await Future.delayed(const Duration(milliseconds: 1500));
     final response = await _dio.get('/posts');
-    final List<dynamic> data = response.data;
-    return data.map((json) => PostDto.fromJson(json)).toList();
+    final raw = response.data;
+    if (raw is! List) {
+      throw const FormatException('Expected a list response for /posts');
+    }
+    return raw.whereType<Map<String, dynamic>>().map(PostDto.fromJson).toList();
   }
 }
