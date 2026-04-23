@@ -14,7 +14,7 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'details/:id',
           builder: (BuildContext context, GoRouterState state) {
-            final String postId = state.pathParameters['id']!;
+            final int postId = int.parse(state.pathParameters['id']!);
             return PostDetails(id: postId);
           },
         ),

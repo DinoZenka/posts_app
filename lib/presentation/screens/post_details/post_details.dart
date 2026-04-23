@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PostDetails extends StatelessWidget {
-  final String id;
+  final int id;
   const PostDetails({super.key, required this.id});
 
   @override
