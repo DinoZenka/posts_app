@@ -9,7 +9,10 @@ class FadedScroll extends StatelessWidget {
     required this.child,
     this.colors,
     this.stops = const <double>[0, .08, .92, 1],
-  });
+  }) : assert(
+         (colors?.length ?? 4) == (stops?.length ?? 4),
+         'colors and stops must have the same length',
+       );
 
   @override
   Widget build(BuildContext context) {

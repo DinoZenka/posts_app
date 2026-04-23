@@ -15,10 +15,11 @@ class PostsNotifier extends _$PostsNotifier {
   }
 
   Future<void> refreshPosts() async {
-    final repo = ref.read(postRepositoryProvider);
-    final data = await repo.getPosts();
-
-    state = AsyncData(data);
+    state = const AsyncLoading();
+    state = await AsyncValue.guard(() async {
+      final repo = ref.read(postRepositoryProvider);
+      return repo.getPosts();
+    });
   }
 }
 
