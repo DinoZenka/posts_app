@@ -6,6 +6,6 @@ class PostDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: const Text('Post details'));
+    return Scaffold(body: Center(child: Text('Post details: $id')));
   }
 }
