@@ -14,7 +14,13 @@ final GoRouter router = GoRouter(
         GoRoute(
           path: 'details/:id',
           builder: (BuildContext context, GoRouterState state) {
-            final int postId = int.parse(state.pathParameters['id']!);
+            final String? idParam = state.pathParameters['id'];
+            final int? postId = int.tryParse(idParam ?? '');
+            if (postId == null) {
+              return const Scaffold(
+                body: Center(child: Text('Invalid post id')),
+              );
+            }
             return PostDetails(id: postId);
           },
         ),
