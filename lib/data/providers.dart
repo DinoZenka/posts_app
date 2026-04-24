@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:posts_app/app_config.dart';
 import 'package:posts_app/data/datasources/remote/post_remote_data_source.dart';
 import 'package:posts_app/data/repositories/post_repository_impl.dart';
 import 'package:posts_app/domain/repositories/post_repository.dart';
@@ -10,7 +11,7 @@ part 'providers.g.dart';
 Dio dio(Ref ref) {
   return Dio(
     BaseOptions(
-      baseUrl: 'https://jsonplaceholder.typicode.com',
+      baseUrl: AppConfig.baseUrl,
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
